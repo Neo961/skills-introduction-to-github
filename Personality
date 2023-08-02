@@ -1,0 +1,21 @@
+import pandas as pd
+
+# Create a DataFrame of personality traits
+traits = pd.DataFrame({
+    "Trait": ["Introversión", "Extroversión", "Intuición", "Sensación", "Pensamiento", "Sentimiento", "Juicio", "Percepción"],
+    "Score": [10, 10, 10, 10, 10, 10, 10, 10]
+})
+
+# Get the user's input for each trait
+for trait in traits["Trait"]:
+    print(trait)
+    user_input = input("Score (1-10): ")
+    traits["Score"][traits["Trait"] == trait] = int(user_input)
+
+# Calculate the average score for each trait
+traits["Average Score"] = traits["Score"].mean()
+
+# Print the personality profile
+print("Your personality profile is:")
+for trait in traits[["Trait", "Average Score"]]:
+    print(trait["Trait"], trait["Average Score"])
